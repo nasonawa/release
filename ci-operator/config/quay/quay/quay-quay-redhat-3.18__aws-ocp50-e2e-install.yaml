@@ -2,7 +2,7 @@ build_root:
   image_stream_tag:
     name: release
     namespace: openshift
-    tag: rhel-9-release-golang-1.25-openshift-4.22
+    tag: rhel-9-release-golang-1.25-openshift-5.0
 images:
   items:
   - dockerfile_path: web/Containerfile.playwright
@@ -15,7 +15,7 @@ releases:
       architecture: amd64
       product: ocp
       stream: nightly
-      version: "4.22"
+      version: "5.0"
 resources:
   '*':
     limits:
@@ -65,7 +65,7 @@ tests:
           service_name: quay
           sample_rate: 1.0
           endpoint: http://jaeger.quay-enterprise.svc.cluster.local:4318/v1/traces
-      QUAY_INDEX_IMAGE_REPO: quay.io/redhat-user-workloads/quay-eng-tenant/stable-3-18-v4-22
+      QUAY_INDEX_IMAGE_REPO: quay.io/redhat-user-workloads/quay-eng-tenant/stable-3-18-v5-0
       QUAY_OPERATOR_CHANNEL: stable-3.18
       QUAY_OPERATOR_SOURCE: fbc-operator-catalog
     post:
@@ -85,4 +85,4 @@ zz_generated_metadata:
   branch: redhat-3.18
   org: quay
   repo: quay
-  variant: aws-ocp422-e2e-install
+  variant: aws-ocp50-e2e-install
