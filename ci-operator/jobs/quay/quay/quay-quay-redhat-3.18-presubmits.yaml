@@ -65,18 +65,18 @@ presubmits:
     - ^redhat-3\.18$
     - ^redhat-3\.18-
     cluster: build06
-    context: ci/prow/gcp-ocp422-e2e-install-images
+    context: ci/prow/aws-ocp50-e2e-install-images
     decorate: true
     decoration_config:
       sparse_checkout_files:
       - web/Containerfile.playwright
     labels:
-      ci-operator.openshift.io/variant: gcp-ocp422-e2e-install
+      ci-operator.openshift.io/variant: aws-ocp50-e2e-install
       ci.openshift.io/generator: prowgen
-      job-release: "4.22"
+      job-release: "5.0"
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
-    name: pull-ci-quay-quay-redhat-3.18-gcp-ocp422-e2e-install-images
-    rerun_command: /test gcp-ocp422-e2e-install-images
+    name: pull-ci-quay-quay-redhat-3.18-aws-ocp50-e2e-install-images
+    rerun_command: /test aws-ocp50-e2e-install-images
     spec:
       containers:
       - args:
@@ -84,7 +84,7 @@ presubmits:
         - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
         - --report-credentials-file=/etc/report/credentials
         - --target=[images]
-        - --variant=gcp-ocp422-e2e-install
+        - --variant=aws-ocp50-e2e-install
         command:
         - ci-operator
         image: quay-proxy.ci.openshift.org/openshift/ci:ci_ci-operator_latest
@@ -117,4 +117,4 @@ presubmits:
       - name: result-aggregator
         secret:
           secretName: result-aggregator
-    trigger: (?m)^/test( | .* )gcp-ocp422-e2e-install-images,?($|\s.*)
+    trigger: (?m)^/test( | .* )aws-ocp50-e2e-install-images,?($|\s.*)
